@@ -114,7 +114,7 @@ function removeCompleted(event) {
     event.preventDefault();
 
     // Grab value that's in user's removal index input box.
-    let deleteComplete = parseFloat(document.querySelector('#remove-completed-button').value);
+    let deleteComplete = parseFloat(document.querySelector('#completed-removal-index').value);
     // Remove todo at that index.
     if(deleteComplete != NaN && deleteComplete > 0 && deleteComplete <= completed.length){
     completed.splice(deleteComplete - 1,1);
