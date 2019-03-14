@@ -68,9 +68,11 @@ function removeTodo(event) {
     event.preventDefault();
 
     // Grab value that's in user's removal index input box.
-    let deleteTodo = document.querySelector('#todo-removal-index').value;
+    let deleteTodo = parseFloat(document.querySelector('#todo-removal-index').value);
     // Remove todo at that index.
-    todos.splice(deleteTodo - 1,1);
+    if(deleteTodo != NaN && deleteTodo > 0 && deleteTodo <= todos.length){
+        todos.splice(deleteTodo - 1,1);
+    }
     // Update our html.
     updateTodosOl();
     // Reset all input fields.
@@ -82,10 +84,12 @@ function completeTodo(event) {
     event.preventDefault();
 
     // Grab value that's in user's todo completion index input box.
-    let doneTodo = document.querySelector('#todo-complete-index').value;
+    let doneTodo = parseFloat(document.querySelector('#todo-complete-index').value);
     // Move todo at that index to the completed list.
-    completed.push(todos[doneTodo - 1]);
-    todos.splice(doneTodo - 1,1);
+    if(doneTodo != NaN && doneTodo > 0 && doneTodo <= todos.length){
+        completed.push(todos[doneTodo - 1]);
+        todos.splice(doneTodo - 1,1);
+    }
     // Update our html.
     updateCompletedOl();
     updateTodosOl();
@@ -110,9 +114,11 @@ function removeCompleted(event) {
     event.preventDefault();
 
     // Grab value that's in user's removal index input box.
-    let deleteComplete = document.querySelector('#remove-completed-button').value;
+    let deleteComplete = parseFloat(document.querySelector('#remove-completed-button').value);
     // Remove todo at that index.
+    if(deleteComplete != NaN && deleteComplete > 0 && deleteComplete <= completed.length){
     completed.splice(deleteComplete - 1,1);
+    }
     // Update our html.
     updateCompletedOl();
     // Reset all input fields.
@@ -124,10 +130,12 @@ function markUncomplete(event) {
     event.preventDefault();
 
     // Grab value that's in user's todo completion index input box.
-    let markUncomplete = document.querySelector('#mark-uncomplete-index').value;
+    let markUncomplete = parseFloat(document.querySelector('#mark-uncomplete-index').value);
     // Move todo at that index to the completed list.
-    todos.push(completed[markUncomplete - 1]);
-    completed.splice(markUncomplete - 1, 1);
+    if(markUncomplete != NaN && markUncomplete > 0 && markUncomplete <= completed.length){
+        todos.push(completed[markUncomplete - 1]);
+        completed.splice(markUncomplete - 1, 1);
+    }
     // Update our html.
     updateCompletedOl();
     updateTodosOl();
