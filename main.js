@@ -37,6 +37,8 @@ function init() {
 
     document.querySelector('#clear-completed-button')
         .addEventListener('click', clearComplete);
+
+    document.querySelector('#date').innerText = Date();
 }
 
 
